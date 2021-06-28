@@ -21,7 +21,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.options("*", cors());
+app.get("/", function(req, res) {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 app.use(express.static("public"));
 app.post(`/add/video`, cors(), (_req_, _res_) => {
@@ -39,10 +41,6 @@ app.get(`/ids`, cors(), async (_req_, _res_) => {
 app.use(express.static(__dirname + "/public/css"));
 app.use(express.static(__dirname + "/public"));
 
-app.get("/", function(req, res) {
-  res.sendFile(__dirname + "/index.html");
-});
-
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log(`serving wee-wee-server`);
 });
