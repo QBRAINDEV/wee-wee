@@ -25,6 +25,14 @@ app.get("/", function(req, res) {
   res.sendFile(__dirname + "/public/index.html");
 });
 
+app.get("/add-video", function(req, res) {
+  res.sendFile(__dirname + "/public/add-video.html");
+});
+
+app.get("/videos", function(req, res) {
+  res.sendFile(__dirname + "/public/videos.html");
+});
+
 app.use(express.static("public"));
 app.post(`/add/video`, cors(), (_req_, _res_) => {
   add_id(_req_, _res_);
