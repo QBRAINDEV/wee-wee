@@ -36,6 +36,13 @@ app.get(`/ids`, cors(), async (_req_, _res_) => {
   _res_.json(await ids(_req_, _res_));
 });
 
+app.use(express.static(__dirname + "/public/css"));
+app.use(express.static(__dirname + "/public"));
+
+app.get("/", function(req, res) {
+  res.sendFile(__dirname + "/index.html");
+});
+
 app.listen(8080, () => {
   console.log(`serving wee-wee-server`);
 });
