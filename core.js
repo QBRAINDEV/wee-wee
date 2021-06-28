@@ -1,70 +1,40 @@
 const express = require(`express`);
-const path = require(`path`);
-const appRoot = require("app-root-path");
 const cors = require(`cors`);
-const helmet = require("helmet");
 const { add_id } = require(`./add-ids`);
 const { ids } = require(`./get-videos-ids`);
 const { login } = require(`./login`);
-class Core {
-  constructor() {
-    this.__serve__ = this.__serve__.bind(this);
-    this.__resources__ = this.__resources__.bind(this);
 
-    this.__app = express();
-    this.__app.use(cors());
-    this.__app.enable("trust proxy");
-    this.__app.use(express.json());
-    this.__app.use(helmet());
+let app = express();
+app.use(cors());
+app.use(express.json());
 
-    this.__app.use((req, res, next) => {
-      res.header("Access-Control-Allow-Origin", "*");
-      res.header(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested, Content-Type, Accept Authorization"
-      );
-      if (req.method === "OPTIONS") {
-        res.header(
-          "Access-Control-Allow-Methods",
-          "POST, PUT, PATCH, GET, DELETE"
-        );
-        return res.status(200).json({});
-      }
-      next();
-    });
-
-    this.__resources__();
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested, Content-Type, Accept Authorization"
+  );
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "POST, PUT, PATCH, GET, DELETE");
+    return res.status(200).json({});
   }
+  next();
+});
 
-  __resources__() {
-    try {
-      this.__app.post(`/add/video`, (_req_, _res_) => {
-        add_id(_req_, _res_);
-      });
+app.options("*", cors());
 
-      this.__app.post(`/login`, (_req_, _res_) => {
-        login(_req_, _res_);
-      });
+app.post(`/add/video`, cors(), (_req_, _res_) => {
+  add_id(_req_, _res_);
+});
 
-      this.__app.get(`/ids`, async (_req_, _res_) => {
-        _res_.json(await ids(_req_, _res_));
-      });
-    } catch (_error_) {
-      console.log(_error_);
-    }
-  }
+app.post(`/login`, cors(), (_req_, _res_) => {
+  login(_req_, _res_);
+});
 
-  __serve__(_port_) {
-    try {
-      this.__app.listen(_port_, () => {
-        console.log(`serving clean-renov-plus-api`);
-      });
-    } catch (_error_) {
-      console.log(_error_);
-    }
-  }
-}
+app.get(`/ids`, cors(), async (_req_, _res_) => {
+  _res_.json(await ids(_req_, _res_));
+});
 
-const core = new Core();
-
-core.__serve__(8080);
+app.listen(8080, () => {
+  console.log(`serving wee-wee-server`);
+});
