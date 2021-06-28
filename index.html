@@ -26,7 +26,7 @@
   document.getElementById(`go-btn`).addEventListener(`click`, () => {
     location.href = `https://wylanns-games.netlify.app/videos.html`;
   })
-      const server_url = `http://localhost:3000`;
+      const server_url = `https://wee-wee-server.herokuapp.com`;
       const headers = {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -50,7 +50,7 @@
                     await __query.json().then(async (user) => {
                         console.log(user)
                         if (user) {
-                            location.href = `https://wylanns-games.netlify.app/add-video.html`;
+                            location.href = `https://wee-wee-server.herokuapp.com/add-video.html`;
                         }
                     });
                 }
