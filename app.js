@@ -43,6 +43,6 @@ app.get("/", function(req, res) {
   res.sendFile(__dirname + "/index.html");
 });
 
-app.listen(8080, () => {
+app.listen(3000, () => {
   console.log(`serving wee-wee-server`);
 });
