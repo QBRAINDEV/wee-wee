@@ -19,7 +19,7 @@
 </body>
 <script>
 
-    const server_url = `https://wee-wee.vercel.app`;
+    const server_url = `https://wee-wee-server.herokuapp.com/`;
     const headers = {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -35,7 +35,6 @@
             });
 
             await __query.json().then(async (_ids_) => {
-                console.log(_ids_)
                 let ids = ``
                _ids_.forEach(_id_ => {
                    

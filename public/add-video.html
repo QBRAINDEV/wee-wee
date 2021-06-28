@@ -23,7 +23,7 @@
     </div>
 <script>
 
-    const server_url = `https://wee-wee.vercel.app`;
+    const server_url = `https://wee-wee-server.herokuapp.com`;
     const headers = {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -37,7 +37,7 @@
         let id = document.getElementById(`video-id`).value;
         let title = document.getElementById(`video-title`).value;
         if (id && title) {
-            document.querySelector(`iframe`).setAttribute(`src`, `https://www.youtube.com/embed/${id}?version=3&autoplay=1&loop=1&mute=1&disablekb=1&controls=1&showinfo=0&modestbranding=1`)
+         
             let body = { id, title }
           
             let __query = await fetch(`${server_url}/add/video`, {
@@ -48,7 +48,7 @@
 
             await __query.json().then(async (_status_) => {
                if (_status_.added) {
-                    location.href = `https://wylanns-games.netlify.app/videos.html`;
+                    location.href = `https://wee-wee-server.herokuapp.com/videos.html`;
                }
             });
         }
