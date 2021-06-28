@@ -14,7 +14,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node ./core.js"
+    "start": "node ./app.js"
   },
   "keywords": [],
   "author": "",
