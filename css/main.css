@@ -1,0 +1,210 @@
+:root {
+  --default-font: plex-sans, Google Sans, Roboto, RobotoDraft, Helvetica, Arial,
+    sans-serif;
+  --shadow-input: 0 -1px 1px 0 rgb(60 64 67 / 10%),
+    0 1px 1px 1px rgb(60 64 67 / 10%);
+  --shadow-header: 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%),
+    0 2px 4px -1px rgb(0 0 0 / 20%);
+  --glass-blue: #3ffcfd;
+  --bold-blue: #070c27;
+  --dark-blue: #071855;
+  --pich-blue: #00e0d0;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--default-font);
+}
+
+a {
+  outline: 0;
+}
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+  color: initial;
+}
+
+a:focus {
+  text-decoration: none;
+  color: initial;
+}
+
+a:hover {
+  text-decoration: none;
+  color: initial;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+html,
+body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bold-blue);
+}
+
+.login {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.login input {
+  outline: 0;
+  border: none;
+  border-bottom: 3px solid var(--glass-blue);
+  margin: 15px;
+  height: 40px;
+  width: 150px;
+  background-color: inherit;
+  color: var(--glass-blue);
+  font-size: 15px;
+  font-weight: 550;
+}
+
+.login input::placeholder {
+  color: var(--glass-blue);
+  font-size: 15px;
+  font-weight: 550;
+}
+
+.log-in-btn {
+  width: 180px;
+  height: 40px;
+  text-align: center;
+  border-radius: 50px;
+  line-height: 40px;
+  font-size: 15px;
+  color: #fff;
+  background-color: #000;
+  box-shadow: var(--shadow-header);
+  cursor: pointer;
+}
+
+.log-in-btn.video {
+  width: 100px;
+}
+
+.sub-title {
+  font-size: 15px;
+  color: var(--glass-blue);
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  font-weight: 500;
+  margin: 15px;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 200px;
+  height: 200px;
+  background-size: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("/icons/playstation-logotype.svg");
+  margin: 20px;
+}
+
+.title {
+  font-size: 38px;
+  width: 100%;
+  height: 80px;
+  line-height: 80px;
+  color: var(--glass-blue);
+  cursor: pointer;
+  margin-bottom: 30px;
+  font-weight: 550;
+  text-align: center;
+}
+
+.btn {
+  width: 250px;
+  height: 40px;
+  text-align: center;
+  border-radius: 50px;
+  line-height: 40px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #000;
+  box-shadow: var(--shadow-header);
+  cursor: pointer;
+}
+
+.btn:hover {
+  box-shadow: var(--shadow-input);
+}
+
+.video {
+  width: 100%;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.video iframe {
+  width: 100%;
+  height: 300px;
+  border: none;
+  box-shadow: var(--shadow-header);
+}
+
+.vid {
+  width: 100%;
+  border: none;
+  margin: 40px;
+}
+
+.vid iframe {
+  box-shadow: var(--shadow-header);
+  width: 100%;
+  height: 300px;
+  border: none;
+}
+
+.vid .title {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: var(--glass-blue);
+  font-size: 17px;
+  font-weight: 500;
+  margin: 10px 0 10px 0;
+}
+@media (min-width: 450px) {
+  .vid iframe {
+    width: 100%;
+    height: 500px;
+    border: none;
+  }
+}
