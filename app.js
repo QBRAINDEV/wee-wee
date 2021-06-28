@@ -1,8 +1,8 @@
 const express = require(`express`);
 const cors = require(`cors`);
-const { add_id } = require(`./public/add-ids`);
-const { ids } = require(`./public/get-videos-ids`);
-const { login } = require(`./public/login`);
+const { add_id } = require(`./add-ids`);
+const { ids } = require(`./get-videos-ids`);
+const { login } = require(`./login`);
 
 let app = express();
 app.use(cors());
@@ -36,12 +36,11 @@ app.get(`/ids`, cors(), async (_req_, _res_) => {
   _res_.json(await ids(_req_, _res_));
 });
 
-app.get("/", function(req, res) {
-  res.sendFile(__dirname + "index.html");
-});
+app.use(express.static(__dirname + "/public/css"));
+app.use(express.static(__dirname + "/public"));
 
-app.get("/add-videos", function(req, res) {
-  res.sendFile(__dirname + "a.html");
+app.get("/", function(req, res) {
+  res.sendFile(__dirname + "/index.html");
 });
 
 app.listen(8080, () => {
