@@ -1,8 +1,8 @@
 const express = require(`express`);
 const cors = require(`cors`);
-const { add_id } = require(`./add-ids`);
-const { ids } = require(`./get-videos-ids`);
-const { login } = require(`./login`);
+const { add_id } = require(`./public/add-ids`);
+const { ids } = require(`./public/get-videos-ids`);
+const { login } = require(`./public/login`);
 
 let app = express();
 app.use(cors());
@@ -23,6 +23,7 @@ app.use((req, res, next) => {
 
 app.options("*", cors());
 
+app.use(express.static("public"));
 app.post(`/add/video`, cors(), (_req_, _res_) => {
   add_id(_req_, _res_);
 });
