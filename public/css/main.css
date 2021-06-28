@@ -45,6 +45,7 @@ a:active {
 
 html,
 body {
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -62,7 +63,8 @@ body {
   align-content: center;
   justify-content: center;
   align-items: center;
-  margin: 20px;
+  margin: 40px;
+  flex-wrap: wrap;
 }
 
 .login input {
@@ -99,6 +101,7 @@ body {
 
 .log-in-btn.video {
   width: 100px;
+  margin: 20px;
 }
 
 .sub-title {
