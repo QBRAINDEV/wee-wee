@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>wee-wee</title>
+    <link rel="icon" href="/icons/videogame.svg" sizes="any" type="image/svg" />
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <div class="login">
+        <input id="video-id" type="text" class="user" placeholder="video-ID">
+        <input id="video-title" type="text" class="user" placeholder="video-titre">
+        <div id="add-video" class="log-in-btn video">Ajouter</div>
+    </div>
+
+    <h3 class="sub-title">Attention tu ne peux pas ta supprimer de vidéo.</h3>
+ 
+   
+    </div>
+<script>
+
+    const server_url = `https://wee-wee.vercel.app`;
+    const headers = {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        pragma: "no-cache",
+        "cache-control": "no-cache",
+        "Access-Control-Allow-Origin": "*"
+    };
+
+    const addVideo = async () => {
+
+        let id = document.getElementById(`video-id`).value;
+        let title = document.getElementById(`video-title`).value;
+        if (id && title) {
+            document.querySelector(`iframe`).setAttribute(`src`, `https://www.youtube.com/embed/${id}?version=3&autoplay=1&loop=1&mute=1&disablekb=1&controls=1&showinfo=0&modestbranding=1`)
+            let body = { id, title }
+          
+            let __query = await fetch(`${server_url}/add/video`, {
+                method: "POST",
+                headers,
+                body: JSON.stringify(body)
+            });
+
+            await __query.json().then(async (_status_) => {
+               if (_status_.added) {
+                    location.href = `https://wylanns-games.netlify.app/videos.html`;
+               }
+            });
+        }
+    }
+
+    document.getElementById(`add-video`).addEventListener(`click`, addVideo)
+</script>
+</body>
+
+</html

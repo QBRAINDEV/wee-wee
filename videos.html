@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>wee-wee</title>
+    <link rel="icon" href="/icons/videogame.svg" sizes="any" type="image/svg" />
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+
+    <div class="container">
+    
+    </div>
+
+</body>
+<script>
+
+    const server_url = `https://wee-wee.vercel.app`;
+    const headers = {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        pragma: "no-cache",
+        "cache-control": "no-cache",
+        "Access-Control-Allow-Origin": "*"
+    };
+
+    const ids = async () => {
+            let __query = await fetch(`${server_url}/ids`, {
+                method: "GET",
+                headers
+            });
+
+            await __query.json().then(async (_ids_) => {
+                console.log(_ids_)
+                let ids = ``
+               _ids_.forEach(_id_ => {
+                   
+                   ids += ` <div class="vid"> <h2 class="title">${_id_.title}</h2><iframe 
+            src="https://www.youtube.com/embed/${_id_.videoID}?version=3&autoplay=1&loop=1&mute=1&disablekb=1&controls=1&showinfo=0&modestbranding=1 ">
+        </iframe></div>`
+               });
+
+               document.querySelector(`.container`).innerHTML = ids;
+            });
+    }
+
+    ids();
+
+</script>
+
+</html

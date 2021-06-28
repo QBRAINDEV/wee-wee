@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>wee-wee</title>
+    <link rel="icon" href="/icons/videogame.svg" sizes="any" type="image/svg" />
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body>
+<div class="login">
+    <input id="user-id" type="text" class="user" placeholder="user-ID">
+    <div id="sing-in" class="log-in-btn">sign-in</div>
+</div>
+    <div class="container">
+        <div class="logo"></div>
+        <h3 class="title">Wylann's Games</h3>
+        <div class="box">
+            <div id="go-btn" class="btn">Voir mes supers videos</div>
+        </div>
+    </div>
+
+  </body>
+  <script>
+  document.getElementById(`go-btn`).addEventListener(`click`, () => {
+    location.href = `https://wylanns-games.netlify.app/videos.html`;
+  })
+      const server_url = `https://git.heroku.com/wee-wee-server.git`;
+      const headers = {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        pragma: "no-cache",
+        "cache-control": "no-cache",
+        "Access-Control-Allow-Origin": "*",
+        'Access-Control-Allow-Credentials': true,
+        "Access-Control-Allow-Methods": "GET,OPTIONS,PATCH,DELETE,POST,PUT",
+        'Access-Control-Allow-Headers':
+          "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+      };
+           const login = async () => {
+                let userID = document.querySelector(`input`).value;
+                if (userID) {
+                    let body = { userID }
+                    let __query = await fetch(`${server_url}/login`, {
+                        method: "POST",
+                        headers,
+                        body: JSON.stringify(body)
+                    });
+                    await __query.json().then(async (user) => {
+                        console.log(user)
+                        if (user) {
+                            location.href = `https://wylanns-games.netlify.app/add-video.html`;
+                        }
+                    });
+                }
+            }
+         
+          document.getElementById(`sing-in`).addEventListener(`click`, login)
+
+            
+   
+  </script>
+</html
